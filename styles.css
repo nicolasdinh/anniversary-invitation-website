@@ -701,7 +701,7 @@ h1, h2, h3 {
   font-size: 0.85rem;
   color: var(--cream);
   line-height: 1.5;
-  padding: 0.5rem 0.6rem;
+  padding: 0.6rem 0.8rem;
   border: 1px solid rgba(212, 168, 67, 0.15);
   border-radius: 4px;
   transition: border-color 0.3s ease, background 0.3s ease;
@@ -713,34 +713,14 @@ h1, h2, h3 {
 }
 
 .meal-option input[type="radio"] {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.meal-option .radio-custom {
-  width: 18px;
-  height: 18px;
-  min-width: 18px;
-  margin-top: 2px;
-}
-
-.meal-option input[type="radio"]:checked ~ .radio-custom::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--gold);
-}
-
-.meal-option:has(input[type="radio"]:checked) {
-  border-color: var(--gold);
-  background: rgba(253, 248, 240, 0.08);
+  appearance: auto;
+  -webkit-appearance: auto;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  margin-top: 3px;
+  cursor: pointer;
+  accent-color: var(--gold);
 }
 
 /* Attending fields animation */

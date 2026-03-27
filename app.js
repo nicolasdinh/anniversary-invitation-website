@@ -158,13 +158,9 @@
           input.value = option.value;
           input.required = true;
 
-          const customRadio = document.createElement('span');
-          customRadio.className = 'radio-custom';
-
           const text = document.createTextNode(option.label);
 
           mealLabel.appendChild(input);
-          mealLabel.appendChild(customRadio);
           mealLabel.appendChild(text);
           optionsDiv.appendChild(mealLabel);
         });
