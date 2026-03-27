@@ -76,12 +76,22 @@
   const submitBtn = document.getElementById('submit-btn');
   const rsvpSuccess = document.getElementById('rsvp-success');
 
-  const meals = [
-    { value: 'beef', label: 'Filet Mignon' },
-    { value: 'chicken', label: 'Herb-Roasted Chicken' },
-    { value: 'fish', label: 'Pan-Seared Salmon' },
-    { value: 'vegetarian', label: 'Garden Risotto (Vegetarian)' },
-  ];
+  const courses = {
+    appetizer: {
+      label: 'Appetizer',
+      options: [
+        { value: 'salad', label: 'Stock Salad — Radish, apple, Parmigiano, asparagus, arugula, frisée' },
+        { value: 'octopus', label: 'Skewered Octopus — Corn, tomato, herbs salad & paprika' },
+      ],
+    },
+    main: {
+      label: 'Main Course',
+      options: [
+        { value: 'striploin', label: 'Striploin — 8oz prime striploin, potato pavé, swiss chard, jus' },
+        { value: 'branzino', label: 'Branzino Fillet — 1½ fillet, eggplant caponata (green olives, celery, onions, tomatoes, eggplants, basil, mint)' },
+      ],
+    },
+  };
 
   // Show/hide attending fields
   attendanceRadios.forEach(radio => {
@@ -106,36 +116,46 @@
       const guestDiv = document.createElement('div');
       guestDiv.className = 'meal-guest';
 
-      const label = document.createElement('div');
-      label.className = 'meal-guest-label';
-      label.textContent = count === 1 ? 'Meal Selection' : 'Guest ' + i + ' — Meal Selection';
-      guestDiv.appendChild(label);
+      const guestLabel = document.createElement('div');
+      guestLabel.className = 'meal-guest-label';
+      guestLabel.textContent = count === 1 ? 'Meal Selection' : 'Guest ' + i + ' — Meal Selection';
+      guestDiv.appendChild(guestLabel);
 
-      const optionsDiv = document.createElement('div');
-      optionsDiv.className = 'meal-options';
+      Object.keys(courses).forEach(courseKey => {
+        const course = courses[courseKey];
 
-      meals.forEach(meal => {
-        const mealLabel = document.createElement('label');
-        mealLabel.className = 'meal-option';
+        const courseLabel = document.createElement('div');
+        courseLabel.className = 'meal-course-label';
+        courseLabel.textContent = course.label;
+        guestDiv.appendChild(courseLabel);
 
-        const input = document.createElement('input');
-        input.type = 'radio';
-        input.name = 'meal_guest_' + i;
-        input.value = meal.value;
-        input.required = true;
+        const optionsDiv = document.createElement('div');
+        optionsDiv.className = 'meal-options';
 
-        const customRadio = document.createElement('span');
-        customRadio.className = 'radio-custom';
+        course.options.forEach(option => {
+          const mealLabel = document.createElement('label');
+          mealLabel.className = 'meal-option';
 
-        const text = document.createTextNode(meal.label);
+          const input = document.createElement('input');
+          input.type = 'radio';
+          input.name = courseKey + '_guest_' + i;
+          input.value = option.value;
+          input.required = true;
 
-        mealLabel.appendChild(input);
-        mealLabel.appendChild(customRadio);
-        mealLabel.appendChild(text);
-        optionsDiv.appendChild(mealLabel);
+          const customRadio = document.createElement('span');
+          customRadio.className = 'radio-custom';
+
+          const text = document.createTextNode(option.label);
+
+          mealLabel.appendChild(input);
+          mealLabel.appendChild(customRadio);
+          mealLabel.appendChild(text);
+          optionsDiv.appendChild(mealLabel);
+        });
+
+        guestDiv.appendChild(optionsDiv);
       });
 
-      guestDiv.appendChild(optionsDiv);
       mealSelectionsDiv.appendChild(guestDiv);
     }
   }
@@ -171,12 +191,13 @@
       rsvp.meals = [];
 
       for (let i = 1; i <= guestCount; i++) {
-        const meal = formData.get('meal_guest_' + i);
-        if (!meal) {
-          alert('Please select a meal for each guest.');
+        const appetizer = formData.get('appetizer_guest_' + i);
+        const main = formData.get('main_guest_' + i);
+        if (!appetizer || !main) {
+          alert('Please select an appetizer and main course for each guest.');
           return;
         }
-        rsvp.meals.push(meal);
+        rsvp.meals.push({ appetizer: appetizer, main: main });
       }
     }
 
