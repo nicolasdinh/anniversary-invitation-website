@@ -689,31 +689,58 @@ h1, h2, h3 {
 
 .meal-options {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
+  flex-direction: column;
+  gap: 0.8rem;
 }
 
 .meal-option {
   display: flex;
-  align-items: center;
-  gap: 0.4rem;
+  align-items: flex-start;
+  gap: 0.6rem;
   cursor: pointer;
   font-size: 0.85rem;
   color: var(--cream);
+  line-height: 1.5;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid rgba(212, 168, 67, 0.15);
+  border-radius: 4px;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.meal-option:hover {
+  border-color: rgba(212, 168, 67, 0.4);
+  background: rgba(253, 248, 240, 0.05);
 }
 
 .meal-option input[type="radio"] {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .meal-option .radio-custom {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  margin-top: 2px;
 }
 
-.meal-option input[type="radio"]:checked + .radio-custom::after {
-  width: 7px;
-  height: 7px;
+.meal-option input[type="radio"]:checked ~ .radio-custom::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.meal-option:has(input[type="radio"]:checked) {
+  border-color: var(--gold);
+  background: rgba(253, 248, 240, 0.08);
 }
 
 /* Attending fields animation */
