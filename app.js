@@ -150,7 +150,7 @@
 
         course.options.forEach(option => {
           const mealLabel = document.createElement('label');
-          mealLabel.className = 'meal-option';
+          mealLabel.className = 'meal-option radio-label';
 
           const input = document.createElement('input');
           input.type = 'radio';
@@ -158,9 +158,14 @@
           input.value = option.value;
           input.required = true;
 
-          const text = document.createTextNode(option.label);
+          const customRadio = document.createElement('span');
+          customRadio.className = 'radio-custom';
+
+          const text = document.createElement('span');
+          text.textContent = option.label;
 
           mealLabel.appendChild(input);
+          mealLabel.appendChild(customRadio);
           mealLabel.appendChild(text);
           optionsDiv.appendChild(mealLabel);
         });
