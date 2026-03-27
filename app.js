@@ -1,8 +1,12 @@
 // ===== Anniversary Invitation Website =====
-// Uses localStorage to persist RSVPs (no server needed for GitHub Pages)
+// RSVPs are saved to Google Sheets + localStorage
 
 (function () {
   'use strict';
+
+  // --- Google Apps Script URL ---
+  // REPLACE THIS with your deployed Google Apps Script web app URL
+  const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
 
   // --- Storage Keys ---
   const STORAGE_KEY = 'anniversary_rsvps';
@@ -17,10 +21,22 @@
     }
   }
 
-  function saveRSVP(rsvp) {
+  function saveRSVPLocal(rsvp) {
     const rsvps = loadRSVPs();
     rsvps.push(rsvp);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(rsvps));
+  }
+
+  function saveRSVPToSheet(rsvp) {
+    if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') return;
+    fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(rsvp),
+    }).catch(function () {
+      // Silently fail — localStorage backup is already saved
+    });
   }
 
   // --- Navigation show/hide on scroll ---
@@ -207,7 +223,31 @@
     submitBtn.querySelector('.btn-loading').classList.remove('hidden');
 
     setTimeout(function () {
-      saveRSVP(rsvp);
+      // Save locally
+      saveRSVPLocal(rsvp);
+
+      // Format and send to Google Sheet
+      var sheetData = {
+        name: rsvp.name,
+        email: rsvp.email,
+        attendance: rsvp.attendance === 'yes' ? 'Joyfully Accepts' : 'Respectfully Declines',
+        guestCount: rsvp.guestCount || '',
+        appetizers: '',
+        mains: '',
+        dietary: rsvp.dietary || '',
+        message: rsvp.message,
+      };
+      if (rsvp.meals && rsvp.meals.length > 0) {
+        var appetizerMap = { salad: 'Stock Salad', octopus: 'Skewered Octopus' };
+        var mainMap = { striploin: 'Striploin', branzino: 'Branzino Fillet' };
+        sheetData.appetizers = rsvp.meals.map(function (m, idx) {
+          return 'Guest ' + (idx + 1) + ': ' + (appetizerMap[m.appetizer] || m.appetizer);
+        }).join('; ');
+        sheetData.mains = rsvp.meals.map(function (m, idx) {
+          return 'Guest ' + (idx + 1) + ': ' + (mainMap[m.main] || m.main);
+        }).join('; ');
+      }
+      saveRSVPToSheet(sheetData);
 
       // Show success, hide form
       form.classList.add('hidden');
