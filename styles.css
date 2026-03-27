@@ -432,6 +432,75 @@ h1, h2, h3 {
   line-height: 1.7;
 }
 
+/* ===== Menu Section ===== */
+.menu {
+  padding: 6rem 2rem;
+  background: var(--cream-dark);
+}
+
+.menu .section-ornament::before {
+  background: var(--cream-dark);
+}
+
+.menu-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--white);
+  border: 1px solid rgba(184, 134, 11, 0.15);
+  padding: 3rem;
+}
+
+.menu-course {
+  text-align: center;
+}
+
+.menu-course-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.25rem;
+}
+
+.menu-course-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+}
+
+.menu-item {
+  margin-bottom: 1.2rem;
+}
+
+.menu-item:last-child {
+  margin-bottom: 0;
+}
+
+.menu-item-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--teal);
+  margin-bottom: 0.2rem;
+}
+
+.menu-item-desc {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.menu-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--gold-light);
+  margin: 2rem auto;
+}
+
 /* ===== RSVP Section ===== */
 .rsvp {
   padding: 6rem 2rem;

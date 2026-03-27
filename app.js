@@ -37,7 +37,7 @@
     lastScrollY = currentScrollY;
 
     // Update active nav link
-    const sections = ['home', 'details', 'story', 'rsvp', 'messages'];
+    const sections = ['home', 'details', 'story', 'menu', 'rsvp', 'messages'];
     let current = 'home';
     for (const id of sections) {
       const el = document.getElementById(id);
