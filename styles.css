@@ -332,7 +332,10 @@ h1, h2, h3 {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
 }
 
-.detail-card-link {
+.detail-card-link,
+.detail-card-link:hover,
+.detail-card-link:visited,
+.detail-card-link:active {
   text-decoration: none;
   color: inherit;
   display: block;
