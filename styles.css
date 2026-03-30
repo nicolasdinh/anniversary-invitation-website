@@ -22,10 +22,10 @@
   --warm-white: #fdfcfa;
   --taupe: #8a7e76;
   --taupe-light: #b8ada5;
-  --charcoal: #2a2525;
-  --text: #332e2e;
-  --text-mid: #5c5454;
-  --text-light: #8a7e7e;
+  --charcoal: #5a4f4f;
+  --text: #6b6060;
+  --text-mid: #8a7e78;
+  --text-light: #a89e98;
   --border: rgba(160, 145, 138, 0.25);
 }
 
@@ -45,7 +45,7 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
 }
 
@@ -134,7 +134,7 @@ h1, h2, h3 {
 }
 
 .hero-names {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 10.5rem;
   font-weight: 500;
   color: #fff;
@@ -159,7 +159,7 @@ h1, h2, h3 {
 }
 
 .hero-occasion {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.5rem;
   font-weight: 500;
   font-style: italic;
@@ -211,7 +211,7 @@ h1, h2, h3 {
 
 .section-heading {
   text-align: center;
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 3rem;
   font-weight: 500;
   color: var(--charcoal);
@@ -284,7 +284,7 @@ h1, h2, h3 {
 }
 
 .detail-main {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.3rem;
   font-weight: 600;
   color: var(--charcoal);
@@ -381,7 +381,7 @@ h1, h2, h3 {
 }
 
 .timeline-card h3 {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.45rem;
   font-weight: 600;
   color: var(--charcoal);
@@ -403,7 +403,7 @@ h1, h2, h3 {
 
 .rsvp-deadline {
   text-align: center;
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.1rem;
   font-style: italic;
   color: var(--text-mid);
@@ -634,7 +634,7 @@ h1, h2, h3 {
 }
 
 .message-card .message-author {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.15rem;
   font-weight: 600;
   color: var(--charcoal);
@@ -651,7 +651,7 @@ h1, h2, h3 {
 
 .no-messages {
   text-align: center;
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.1rem;
   font-style: italic;
   color: var(--text-light);
@@ -675,7 +675,7 @@ h1, h2, h3 {
 }
 
 .footer-names {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 2.2rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.95);
@@ -692,7 +692,7 @@ h1, h2, h3 {
 }
 
 .footer-note {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.05rem;
   font-style: italic;
   color: rgba(255, 255, 255, 0.5);
