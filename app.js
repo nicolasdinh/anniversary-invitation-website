@@ -126,7 +126,6 @@
     if (attendance === 'yes') {
       const guestCount = parseInt(formData.get('guestCount'));
       rsvp.guestCount = guestCount;
-      rsvp.dietary = formData.get('dietary').trim();
     }
 
     // Simulate brief sending delay
@@ -144,7 +143,6 @@
         email: rsvp.email,
         attendance: rsvp.attendance === 'yes' ? 'Joyfully Accepts' : 'Respectfully Declines',
         guestCount: rsvp.guestCount || '',
-        dietary: rsvp.dietary || '',
         message: rsvp.message,
       };
       saveRSVPToSheet(sheetData);

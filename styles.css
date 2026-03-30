@@ -332,6 +332,28 @@ h1, h2, h3 {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
 }
 
+.detail-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+
+.map-link-hint {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.detail-card-link:hover .map-link-hint {
+  opacity: 1;
+}
+
 .detail-icon {
   width: 36px;
   height: 36px;
