@@ -48,7 +48,24 @@ function doPost(e) {
 }
 
 function doGet(e) {
-  return ContentService
-    .createTextOutput(JSON.stringify({ result: 'success', message: 'RSVP endpoint is working' }))
-    .setMimeType(ContentService.MimeType.JSON);
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = sheet.getDataRange().getValues();
+    var messages = [];
+    // Start at row index 1 to skip the header row
+    for (var i = 1; i < data.length; i++) {
+      var name = data[i][1];    // Column B: Name
+      var message = data[i][8]; // Column I: Message
+      if (message) {
+        messages.push({ name: name, message: message });
+      }
+    }
+    return ContentService
+      .createTextOutput(JSON.stringify({ result: 'success', messages: messages }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (error) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ result: 'error', error: error.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
 }

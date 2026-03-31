@@ -182,30 +182,36 @@
     messagesGrid.insertBefore(card, messagesGrid.firstChild);
   }
 
-  // Load existing messages on page load
+  // Load existing messages on page load from Google Sheets
   function loadMessages() {
-    const rsvps = loadRSVPs();
-    const withMessages = rsvps.filter(r => r.message);
+    if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') return;
+    fetch(GOOGLE_SCRIPT_URL)
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data.result === 'success' && data.messages && data.messages.length > 0) {
+          noMessages.classList.add('hidden');
+          // Reverse so newest submissions (bottom of sheet) appear first
+          data.messages.slice().reverse().forEach(function (r) {
+            const card = document.createElement('div');
+            card.className = 'message-card';
 
-    if (withMessages.length > 0) {
-      noMessages.classList.add('hidden');
-      withMessages.reverse().forEach(r => {
-        const card = document.createElement('div');
-        card.className = 'message-card';
+            const authorEl = document.createElement('div');
+            authorEl.className = 'message-author';
+            authorEl.textContent = r.name;
 
-        const authorEl = document.createElement('div');
-        authorEl.className = 'message-author';
-        authorEl.textContent = r.name;
+            const textEl = document.createElement('div');
+            textEl.className = 'message-text';
+            textEl.textContent = '"' + r.message + '"';
 
-        const textEl = document.createElement('div');
-        textEl.className = 'message-text';
-        textEl.textContent = '"' + r.message + '"';
-
-        card.appendChild(authorEl);
-        card.appendChild(textEl);
-        messagesGrid.appendChild(card);
+            card.appendChild(authorEl);
+            card.appendChild(textEl);
+            messagesGrid.appendChild(card);
+          });
+        }
+      })
+      .catch(function () {
+        // Silently fail if the sheet is unreachable
       });
-    }
   }
 
   loadMessages();
