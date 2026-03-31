@@ -6,7 +6,7 @@
 
   // --- Google Apps Script URL ---
   // REPLACE THIS with your deployed Google Apps Script web app URL
-  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyrlylSvo6z92tkgeYtE5YpV7YAnolFrth4g0WIVjBQNq3nZhA3q17y367Fh8ZEBf5R/exec';
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwENMguFr0bXGzqh3GfxXS7eAe42dYtBlQpkbq39Nl5qEAy-WBJ0pudRshu61O5xJNZUg/exec';
 
   // --- Storage Keys ---
   const STORAGE_KEY = 'anniversary_rsvps';
