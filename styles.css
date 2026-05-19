@@ -443,22 +443,15 @@ h1, h2, h3 {
   line-height: 1.75;
 }
 
-.timeline-item--final {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-top: 1rem;
-}
-
 .timeline-item--final .timeline-node {
-  margin-bottom: 1.5rem;
+  align-self: start;
+  padding-top: 0.3rem;
 }
 
 .timeline-item--final .timeline-card {
-  max-width: 420px;
-  padding: 0;
-  text-align: center;
+  max-width: none;
+  padding: 0 2rem;
+  text-align: left;
 }
 
 /* ===== RSVP ===== */
@@ -836,20 +829,6 @@ h1, h2, h3 {
   .timeline-item:nth-child(even) .timeline-card {
     padding: 0;
     text-align: left;
-  }
-
-  .timeline-item--final {
-    align-items: flex-start;
-    text-align: left;
-    padding-left: 2.5rem;
-    margin-top: 0;
-  }
-
-  .timeline-item--final .timeline-node {
-    position: absolute;
-    left: 0;
-    top: 0.3rem;
-    margin-bottom: 0;
   }
 
   .timeline-item--final .timeline-card {
