@@ -53,7 +53,7 @@
     lastScrollY = currentScrollY;
 
     // Update active nav link
-    const sections = ['home', 'details', 'story', 'gallery', 'rsvp', 'messages'];
+    const sections = ['home', 'details', 'story', 'rsvp', 'messages'];
     let current = 'home';
     for (const id of sections) {
       const el = document.getElementById(id);
@@ -81,20 +81,6 @@
 
   window.addEventListener('scroll', animateTimeline, { passive: true });
   animateTimeline();
-
-  // --- Gallery animation on scroll ---
-  function animateGallery() {
-    const items = document.querySelectorAll('.gallery-item');
-    items.forEach(function (item, i) {
-      const rect = item.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.88) {
-        setTimeout(function () { item.classList.add('visible'); }, i * 80);
-      }
-    });
-  }
-
-  window.addEventListener('scroll', animateGallery, { passive: true });
-  animateGallery();
 
   // --- RSVP Form Logic ---
   const form = document.getElementById('rsvp-form');
