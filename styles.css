@@ -344,7 +344,7 @@ h1, h2, h3 {
 
 .timeline-item {
   display: grid;
-  grid-template-columns: 1fr 60px 1fr;
+  grid-template-columns: 1.5fr 60px 1fr;
   grid-template-areas: "photo node card";
   align-items: center;
   margin-bottom: 5rem;
@@ -354,6 +354,7 @@ h1, h2, h3 {
 }
 
 .timeline-item:nth-child(even) {
+  grid-template-columns: 1fr 60px 1.5fr;
   grid-template-areas: "card node photo";
 }
 
