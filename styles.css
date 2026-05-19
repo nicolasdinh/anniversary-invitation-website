@@ -445,21 +445,16 @@ h1, h2, h3 {
   line-height: 1.75;
 }
 
-.timeline-item--final .timeline-node {
-  align-self: start;
-  padding-top: 0.3rem;
-}
-
 .timeline-item--final .timeline-card {
   grid-column: 1 / -1;
-  grid-row: 2;
+  grid-row: 1;
   position: relative;
   z-index: 2;
   background: var(--blush);
   text-align: center;
   max-width: 440px;
-  margin: 0 auto;
-  padding: 1.5rem 1rem 0;
+  margin: 2rem auto 0;
+  padding: 0 1rem;
 }
 
 /* ===== RSVP ===== */
