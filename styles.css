@@ -449,29 +449,16 @@ h1, h2, h3 {
   padding-top: 0.3rem;
 }
 
-.timeline-item--final .timeline-node::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 6px;
-  height: 2000px;
-  background: var(--blush);
-}
-
-.timeline-item--final .timeline-dot {
-  position: relative;
-  z-index: 1;
-}
-
 .timeline-item--final .timeline-card {
   grid-column: 1 / -1;
   grid-row: 2;
+  position: relative;
+  z-index: 2;
+  background: var(--blush);
   text-align: center;
   max-width: 440px;
-  margin: 1.5rem auto 0;
-  padding: 0;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 0;
 }
 
 /* ===== RSVP ===== */
@@ -854,8 +841,11 @@ h1, h2, h3 {
   .timeline-item--final .timeline-card {
     grid-column: auto;
     grid-row: auto;
+    position: static;
+    background: none;
     max-width: none;
     margin: 0;
+    padding: 0;
     text-align: left;
   }
 
